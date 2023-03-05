@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Compiladores PHP</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <input
+      type="text"
+      name="email"
+      id="email"
+      placeholder="Ingrese su email"
+      required
+    />
+    <button onclick='probarValor()'>Validar E-mail</button>
+    <script>
+      function probarValor() {
+        var emailInput = document.getElementById("email");
+        alert(validar(emailInput));
+      }
+    </script>
+    <script src="punto1.php"></script>
+  </body>
+</html>
