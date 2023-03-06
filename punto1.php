@@ -11,41 +11,41 @@
 </head>
 
 <body>
-    <input type="text" name="email" id="email" placeholder="Ingrese su email" required />
-    <button onclick='probarValor()'>Validar E-mail</button>
-    <script>
-        <?php
-        /*Validar_email valida un email con el patron especificado
-          @param email string
-          @return true si el email es valido
-          */
-        function validar_email($email)
-        {
-            $patron = '/^[a-z0-9]+([._-][a-z0-9]+)*@[a-z0-9]+([_-][a-z0-9]+)*(\.[a-z0-9]+([_-][a-z0-9]+)*){1}$/i';
-            return preg_match($patron, $email);
-        }
+    <form method="POST">
+        <label for="email">Ingresa un email:</label>
+        <input type="text" id="email" name="email">
+        <button type="submit">Enviar</button>
+    </form>
+    <form method="POST">
+        <label for="email">Ingresa un email:</label>
+        <input type="text" id="email" name="email">
+        <button type="submit">Enviar</button>
+    </form>
 
-        /*Valida correo electrónico:
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'];
+        $valid = validar_email($email);
+    }
+
+    /*Validar_email valida un email con el patron especificado
           @param email string
           @return un mensaje de éxito si el correo es válido
           @return un mensaje de invalido si el correo es no es válido
           */
-        function validar($email)
-        {
-            if (validar_email($email)) {
-                return "La dirección de correo electrónico es válida.";
-            } else {
-                return "La dirección de correo electrónico no es válida.";
-            }
-        }
-        ?>
+    function validar_email($email)
+    {
+        $patron = '/^[a-z0-9]+([._-][a-z0-9]+)*@[a-z0-9]+([_-][a-z0-9]+)*(\.[a-z0-9]+([_-][a-z0-9]+)*){1}$/i';
+        $valid = preg_match($patron, $email);
 
-        function probarValor() {
-            var emailInput = document.getElementById("email");
-            alert(validar(emailInput));
+        if ($valid) {
+            return "La dirección de correo electrónico es válida.";
+        } else {
+            return "La dirección de correo electrónico no es válida.";
         }
-    </script>
-    <script src="punto1.php"></script>
+    }
+    ?>
+    <h1><?php echo isset($valid) ? $valid : ''; ?></h1>
 </body>
 
 </html>
