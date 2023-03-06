@@ -13,13 +13,8 @@
 <body>
     <form method="POST">
         <label for="email">Ingresa un email:</label>
-        <input type="text" id="email" name="email">
-        <button type="submit">Enviar</button>
-    </form>
-    <form method="POST">
-        <label for="email">Ingresa un email:</label>
-        <input type="text" id="email" name="email">
-        <button type="submit">Enviar</button>
+        <input type="text" name="email" id="email" placeholder="example@example.com" required>
+        <button type="submit">Probar</button>
     </form>
 
     <?php
